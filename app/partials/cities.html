@@ -1,0 +1,25 @@
+
+<table class="table cities">
+    <thead>
+    <tr>
+        <th colspan="4">
+            <a href="" ng-click="order('name')">Today's forecast</a>
+            <span class="sortorder" ng-show="predicate === 'name'" ng-class="{reverse:reverse}"></span>
+
+            <input type="text" class="custom-form-control" ng-model="nameFilter" placeholder="Search..."/>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="city in cityList | filter: searchFilter | orderBy:predicate:reverse">
+        <td>
+            <a href="#/cities/{{city.id}}">
+                {{city.name}}
+            </a>
+        </td>
+        <td><img style="vertical-align: middle;" src="http://openweathermap.org/img/w/{{city.weather[0].icon}}.png" alt="{{city.weather[0].description}}"></td>
+        <td>{{city.main.temp | number:0}}&deg</td>
+        <td class="night">{{city.main.temp_min | number:0}}&deg</td>
+    </tr>
+    </tbody>
+</table>

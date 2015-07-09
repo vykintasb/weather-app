@@ -1,0 +1,25 @@
+<section class="city">
+    <a href="./#/cities" class="close btn-close" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+
+    <div>
+        <div class="main-header">
+            <div class="city-name text-center">{{city.name }} </div>
+            <div class="city-temp text-center">{{city.main.temp | number:0}}&deg</div>
+            <div class="city-desc text-center">{{city.weather[0].description}}</div>
+        </div>
+
+        <dl class="dl-horizontal params">
+            <dt>Pressure:</dt>
+            <dd>{{city.main.pressure}} Pa</dd>
+
+            <dt>Humidity:</dt>
+            <dd>{{city.main.humidity}} Pa</dd>
+
+            <dt>Wind:</dt>
+            <dd>{{city.wind.speed}} Pa</dd>
+
+            <dt>Pressure:</dt>
+            <dd>{{city.main.pressure}} Pa</dd>
+        </dl>
+    </div>
+</section>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Amazing Weather desktop App</title>
+    <meta name="viewport"     content="width=device-width, initial-scale=1.0">
+    <meta name="description"  content="This application just shows up current weather conditions in a city your are" />
+    <meta name="keywords"     content="current weather application desktop openweathermap angular angularjs" />
+    <meta name="robots"       content="all" />
+    <meta name="author"       content="Vykintas BARTKUS" />
+    <link rel="shortcut icon" href="img/weezle_sun.png">
+
+    <!-- Template -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900' rel='stylesheet' type='text/css'>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/app.css" rel="stylesheet" media="screen" /></head>
+
+<!--[if IE]>
+    <script src="js/ie/respond.js"></script>
+    <script src="js/ie/html5.js"></script>
+    <!--selectivizr is a JavaScript utility that emulates CSS3 pseudo-classes and attribute selectors in Internet Explorer 6-8 -->
+<script src="js/ie/selectivizr-min.js"></script>
+<script>
+    document.createElement('header');
+    document.createElement('nav');
+    document.createElement('section');
+    document.createElement('article');
+    document.createElement('aside');
+    document.createElement('footer');
+    document.createElement('hgroup');
+</script>
+<![endif]-->
+
+<body ng-app="weatherApp">
+
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-sm-6 full-height">
+            <div ng-controller="currentCityController" class="current-city">
+                <div class="main-header">
+                    <div class="city-name text-center">{{city.name}} </div>
+                    <div class="city-temp text-center">{{city.main.temp | number:0}}&deg</div>
+                    <div class="city-desc text-center">{{city.weather[0].description}}</div>
+                </div>
+
+                <dl class="dl-horizontal params">
+                    <dt>Pressure:</dt>
+                    <dd>{{city.main.pressure}} Pa</dd>
+
+                    <dt>Humidity:</dt>
+                    <dd>{{city.main.humidity}} Pa</dd>
+
+                    <dt>Wind:</dt>
+                    <dd>{{city.wind.speed}} Pa</dd>
+
+                    <dt>Pressure:</dt>
+                    <dd>{{city.main.pressure}} Pa</dd>
+                </dl>
+
+            </div>
+        </div>
+        <div class="col-sm-6 full-height">
+            <ng-view></ng-view>
+        </div>
+    </div>
+</div>
+
+<div id="clouds">
+    <div class="cloud x1"></div>
+    <div class="cloud x1_5"></div>
+    <div class="cloud x2"></div>
+    <div class="cloud x3"></div>
+    <div class="cloud x4"></div>
+    <div class="cloud x5"></div>
+</div>
+
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+
+<script>
+    /*** Full height background on large screens ***/
+
+    function viewPortHeight() {
+        var height =  $(window).height();
+        if ($(window).width() > 767) {
+            $(".full-height").css({"height": height + "px"});
+        } else {
+            $(".full-height").css({"height": "auto"});
+        }
+    }
+
+    $( function() {
+        viewPortHeight();
+    });
+
+    $(window).resize(function() {
+        if(this.resizeTO) clearTimeout(this.resizeTO);
+        this.resizeTO = setTimeout(function() {
+            viewPortHeight();
+        }, 500);
+    });
+
+
+</script>
+
+</body>
+</html>
